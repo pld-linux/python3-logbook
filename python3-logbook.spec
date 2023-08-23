@@ -3,7 +3,7 @@ Summary:	A logging replacement for Python
 Name:		python3-%{module}
 Version:	1.6.0
 Release:	1
-License:	ISC
+License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/logbook/
 Source0:	https://files.pythonhosted.org/packages/source/l/logbook/Logbook-%{version}.tar.gz
