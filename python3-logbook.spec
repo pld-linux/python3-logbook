@@ -7,20 +7,21 @@
 Summary:	A logging replacement for Python
 Summary(pl.UTF-8):	Zamiennik biblioteki logging dla Pythona
 Name:		python3-%{module}
-Version:	1.6.0
+Version:	1.7.0.post0
 Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/logbook/
 Source0:	https://files.pythonhosted.org/packages/source/l/logbook/Logbook-%{version}.tar.gz
-# Source0-md5:	78029e508a4e8a5e6d6fd4df752b84ae
+# Source0-md5:	cbb7e5fb2d6325f42a323b0000127393
 URL:		https://pypi.org/project/Logbook/
-BuildRequires:	python3 >= 1:3.7
+BuildRequires:	python3 >= 1:3.8
 BuildRequires:	python3-Cython
-BuildRequires:	python3-devel >= 1:3.7
-BuildRequires:	python3-modules >= 1:3.7
+BuildRequires:	python3-devel >= 1:3.8
+BuildRequires:	python3-modules >= 1:3.8
 BuildRequires:	python3-setuptools
 %if %{with tests}
+BuildRequires:	python3-brotli
 BuildRequires:	python3-pytest >= 6
 BuildRequires:	python3-pytest-rerunfailures
 %endif
@@ -28,14 +29,12 @@ BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with doc}
-%if "%{py3_ver}" == "3.7"
-BuildRequires:	python3-importlib_metadata
-%endif
 # already installed package for metadata
 BuildRequires:	python3-logbook
 BuildRequires:	sphinx-pdg-3
+# >= 5
 %endif
-Requires:	python3-modules >= 1:3.7
+Requires:	python3-modules >= 1:3.8
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -64,6 +63,7 @@ Dokumentacja API modułu Pythona Logbook.
 
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTEST_PLUGINS="pytest_rerunfailures" \
 PYTHONPATH=$(echo $(pwd)/build-3/lib.linux-*) \
 %{__python3} -m pytest tests
 %endif
