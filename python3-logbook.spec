@@ -8,7 +8,7 @@ Summary:	A logging replacement for Python
 Summary(pl.UTF-8):	Zamiennik biblioteki logging dla Pythona
 Name:		python3-%{module}
 Version:	1.7.0.post0
-Release:	2
+Release:	3
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/logbook/
