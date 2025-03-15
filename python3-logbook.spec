@@ -8,7 +8,7 @@ Summary:	A logging replacement for Python
 Summary(pl.UTF-8):	Zamiennik biblioteki logging dla Pythona
 Name:		python3-%{module}
 Version:	1.8.0
-Release:	0.1
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/logbook/
@@ -31,7 +31,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with doc}
 # already installed package for metadata
-#BuildRequires:	python3-logbook
+BuildRequires:	python3-logbook = %{version}
 BuildRequires:	sphinx-pdg-3
 # >= 5
 %endif
