@@ -7,13 +7,14 @@
 Summary:	A logging replacement for Python
 Summary(pl.UTF-8):	Zamiennik biblioteki logging dla Pythona
 Name:		python3-%{module}
-Version:	1.7.0.post0
-Release:	3
+Version:	1.8.0
+Release:	0.1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/logbook/
-Source0:	https://files.pythonhosted.org/packages/source/l/logbook/Logbook-%{version}.tar.gz
-# Source0-md5:	cbb7e5fb2d6325f42a323b0000127393
+Source0:	https://files.pythonhosted.org/packages/source/l/logbook/logbook-%{version}.tar.gz
+# Source0-md5:	d15918a5745349eefab327661454527d
+Patch0:		no-network.patch
 URL:		https://pypi.org/project/Logbook/
 BuildRequires:	python3 >= 1:3.8
 BuildRequires:	python3-Cython
@@ -30,7 +31,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with doc}
 # already installed package for metadata
-BuildRequires:	python3-logbook
+#BuildRequires:	python3-logbook
 BuildRequires:	sphinx-pdg-3
 # >= 5
 %endif
@@ -56,7 +57,8 @@ API documentation for Python Logbook module.
 Dokumentacja API modułu Pythona Logbook.
 
 %prep
-%setup -q -n Logbook-%{version}
+%setup -q -n logbook-%{version}
+%patch -P 0 -p1
 
 %build
 %py3_build

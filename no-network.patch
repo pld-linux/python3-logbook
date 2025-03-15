@@ -1,0 +1,13 @@
+--- logbook-1.8.0/tests/test_syslog_handler.py~	2024-10-26 18:23:53.000000000 +0200
++++ logbook-1.8.0/tests/test_syslog_handler.py	2025-03-15 11:05:08.733319135 +0100
+@@ -26,6 +26,10 @@
+ @pytest.mark.usefixtures("unix_sock_path")
+ @pytest.mark.parametrize("sock_family,socktype,address", TO_TEST)
+ @pytest.mark.parametrize("app_name", [None, "Testing"])
++@pytest.mark.skipif(
++    os.environ.get("ENABLE_NETWORK_TESTS") is None,
++    reason="Needs network.",
++)
+ def test_syslog_handler(
+     logger, activation_strategy, sock_family, socktype, address, app_name
+ ):
